@@ -1,7 +1,22 @@
-﻿<?php
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 // Version: 2015040101
 // Date: 2015-04-01
-// Language: en
+// Language: fr.
 
 $string['addsubmission'] = 'Ajouter un envoi';
 $string['allowlate'] = 'Autoriser les envois après la date limite';
@@ -379,9 +394,7 @@ $string['attachrubric'] = 'Joindre une grille d&#39;évaluation à cet exercice'
 $string['norubric'] = 'Aucune grille d&#39;évaluation';
 $string['otherrubric'] = 'Utiliser la grille d&#39;évaluation appartenant à un autre enseignant';
 $string['attachrubricnote'] = 'Remarque: les étudiants pourront voir les grilles d&#39;évaluation jointes et leurs contenus avant de soumettre leur devoir.';
-$string['changerubricwarning'] = 'Si vous modifiez ou supprimez une grille d&#39;évaluation, l&#39;ensemble des
-scores existants des copies de cet exercice (dont les scores des fiches
-d&#39;évaluation) seront effacés. Les notes globale des copies corrigées précédement resteront inchangées.';
+$string['changerubricwarning'] = 'Si vous modifiez ou supprimez une grille d&#39;évaluation, l&#39;ensemble des scores existants des copies de cet exercice (dont les scores des fiches d&#39;évaluation) seront effacés. Les notes globale des copies corrigées précédement resteront inchangées.';
 $string['launchrubricmanager'] = 'Démarrer le Gestionnaire des grilles d&#39;évaluation';
 $string['launchrubricview'] = 'Voir la grille d&#39;évaluation utilisée pour corriger';
 $string['launchrubricviewshort'] = 'Rubrique de correction';

@@ -1,7 +1,22 @@
-﻿<?php
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 // Version: 2015040101
 // Date: 2015-04-01
-// Language: en
+// Language: ja.
 
 $string['addsubmission'] = '提出物を追加';
 $string['allowlate'] = '提出期限日を過ぎた提出を許可する';
@@ -482,8 +497,7 @@ $string['turnitinrefreshingsubmissions'] = '提出物を更新中';
 $string['turnitinanon_help'] = 'このオプションを［はい］にすると、Turnitinの課題で匿名マーキングを使用するように設定することができます。匿名マーキングは、提出があると無効にできなくなります。';
 $string['digital_receipt_subject'] = 'これはあなたのTurnitinのデジタル受領書です';
 $string['digital_receipt_message'] = '{$a->lastname} {$a->firstname}様、<br /><br />あなたは<strong>{$a->submission_date}</strong>に、<strong>{$a->course_fullname}</strong>クラスの課題<strong>{$a->assignment_name}{$a->assignment_part}</strong>にファイル<strong>{$a->submission_title}</strong>を提出しました。提出IDは<strong>{$a->submission_id}</strong>です。デジタル受領書はすべて、あなたの課題受信箱および文書閲覧内にある印刷やダウンロードボタンを使って閲覧および印刷することができます。<br /><br />Turnitinをご利用いただき、ありがとうございます。<br /><br />Turnitinチーム一同';
-$string['messageprovider:submission'] = 'Turnitinの課題のデジタル受領書
-に関する通知';
+$string['messageprovider:submission'] = 'Turnitinの課題のデジタル受領書 に関する通知';
 $string['errorenrollingall'] = '全学生をTurnitinに登録する際にエラーが発生しました。システム管理者にお問い合わせください。';
 $string['ppassignmentcreateerror'] = 'このモジュールをTurnitin上で作成できませんでした。詳しい情報については、APIログをご覧ください。';
 $string['pp_classcreationerror'] = 'このクラスをTurnitin上で作成できませんでした。詳しい情報については、APIログをご覧ください。';

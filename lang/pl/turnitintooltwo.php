@@ -1,7 +1,22 @@
-﻿<?php
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 // Version: 2015040101
 // Date: 2015-04-01
-// Language: pl
+// Language: pl.
 
 $string['addsubmission'] = 'Dodaj wysyłkę';
 $string['allowlate'] = 'Zezwalaj na wysyłki po terminie oddania zadania';
@@ -137,8 +152,7 @@ $string['turnitinaccountid'] = 'Identyfikator konta Turnitin';
 $string['turnitinaccountid_desc'] = '<b>[Wymagane]</b><br />Wprowadź identyfikator głównego konta Turnitin';
 $string['turnitinanon'] = 'Anonimowe poprawki';
 $string['turnitinapiurl'] = 'URL API Turnitin';
-$string['turnitindeleteconfirm'] = 'Usuwanie prac usuwa je z twojej listy przesyłek i skrzynki, ale nie
-\nusuwa ich kompletnie z bazy danych Turnitin.\n\nCzy na pewno chcesz usunąć tę przesyłkę? Ta czynność nie może być anulowana.';
+$string['turnitindeleteconfirm'] = 'Usuwanie prac usuwa je z twojej listy przesyłek i skrzynki, ale nie \n usuwa ich kompletnie z bazy danych Turnitin.\n\nCzy na pewno chcesz usunąć tę przesyłkę? Ta czynność nie może być anulowana.';
 $string['turnitindeletionerror'] = 'Usunięcie wysyłki do Turnitin nie powiodło się. Lokalna kopia Moodle została usunięta, ale wysyłka do Turnitin nie może być usunięta.';
 $string['turnitinenrolstudents'] = 'Zarejestruj wszystkich studentów';
 $string['turnitinloading'] = 'Synchronizacja danych';

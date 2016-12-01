@@ -1,7 +1,22 @@
-﻿<?php
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 // Version: 2015040101
 // Date: 2015-04-01
-// Language: en
+// Language: pt_br.
 
 $string['addsubmission'] = 'Adicionar Envio';
 $string['allowlate'] = 'Permitir envios após a Data de Entrega';
@@ -100,9 +115,7 @@ $string['saveusage'] = 'Salvar Dados do Despejo';
 $string['selectoption'] = 'Selecionar Opção';
 $string['showusage'] = 'Mostrar Dados do Despejo';
 $string['spapercheck'] = 'Comparar com os documentos armazenados dos alunos';
-$string['spapercheck_help'] = 'Comparar com o depósito de documentos de alunos Turnitin ao processar os Relatórios
-de Originalidade dos documentos. A porcentagem do índice de semelhança
-pode baixar se essa opção for desmarcada.';
+$string['spapercheck_help'] = 'Comparar com o depósito de documentos de alunos Turnitin ao processar os Relatórios de Originalidade dos documentos. A porcentagem do índice de semelhança pode baixar se essa opção for desmarcada.';
 $string['standardrepository'] = 'Depósito Padrão';
 $string['student'] = 'Aluno';
 $string['studentreports'] = 'Exibir os Relatórios de Originalidade aos alunos';

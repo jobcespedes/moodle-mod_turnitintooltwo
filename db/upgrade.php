@@ -1,17 +1,33 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * @package   turnitintooltwo
  * @copyright 2010 iParadigms LLC
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 function xmldb_turnitintooltwo_upgrade($oldversion) {
 
-    global $CFG, $THEME, $DB, $OUTPUT;
+    global $DB;
 
     $dbman = $DB->get_manager();
 
-    // Do necessary DB upgrades here
-    // Newer DB Man field ($name, $type=null, $precision=null, $unsigned=null, $notnull=null, $sequence=null, $default=null, $previous=null)
+    // Do necessary DB upgrades here.
     if ($oldversion < 2014012401) {
         $table = new xmldb_table('turnitintooltwo');
         $field = new xmldb_field('allownonor', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, 0, 'rubric');
@@ -19,8 +35,10 @@ function xmldb_turnitintooltwo_upgrade($oldversion) {
             $dbman->add_field($table, $field);
         }
         $table = new xmldb_table('turnitintooltwo_submissions');
-        $field1 = new xmldb_field('submission_acceptnothing', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, 0, 'submission_transmatch');
-        $field2 = new xmldb_field('submission_orcapable', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, 0, 'submission_acceptnothing');
+        $field1 = new xmldb_field('submission_acceptnothing', XMLDB_TYPE_INTEGER, '10', null,
+            XMLDB_NOTNULL, null, 0, 'submission_transmatch');
+        $field2 = new xmldb_field('submission_orcapable', XMLDB_TYPE_INTEGER, '10', null,
+            XMLDB_NOTNULL, null, 0, 'submission_acceptnothing');
         if (!$dbman->field_exists($table, $field1)) {
             $dbman->add_field($table, $field1);
         }
@@ -31,7 +49,8 @@ function xmldb_turnitintooltwo_upgrade($oldversion) {
 
     if ($oldversion < 2014012404) {
         $table = new xmldb_table('turnitintooltwo_users');
-        $field = new xmldb_field('user_agreement_accepted', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, 0, 'instructor_rubrics');
+        $field = new xmldb_field('user_agreement_accepted', XMLDB_TYPE_INTEGER, '1', null,
+            XMLDB_NOTNULL, null, 0, 'instructor_rubrics');
         if (!$dbman->field_exists($table, $field)) {
             $dbman->add_field($table, $field);
         }
@@ -44,7 +63,7 @@ function xmldb_turnitintooltwo_upgrade($oldversion) {
             $dbman->add_field($table, $field);
         }
 
-        // Add new indexes to tables
+        // Add new indexes to tables.
         $table = new xmldb_table('turnitintooltwo_parts');
         $index = new xmldb_index('turnitintooltwoid', XMLDB_INDEX_NOTUNIQUE, array('turnitintooltwoid'));
         if (!$dbman->index_exists($table, $index)) {
@@ -101,7 +120,8 @@ function xmldb_turnitintooltwo_upgrade($oldversion) {
     if ($oldversion < 2015040104) {
         $table = new xmldb_table('turnitintooltwo_users');
         // Alter datatype of user_agreement_accepted.
-        $field = new xmldb_field('user_agreement_accepted', XMLDB_TYPE_INTEGER, '1', false, XMLDB_NOTNULL, null, 0, 'instructor_rubrics');
+        $field = new xmldb_field('user_agreement_accepted', XMLDB_TYPE_INTEGER, '1', false,
+            XMLDB_NOTNULL, null, 0, 'instructor_rubrics');
 
         if (!$dbman->field_exists($table, $field)) {
             $dbman->add_field($table, $field);

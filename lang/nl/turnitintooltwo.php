@@ -1,7 +1,22 @@
-﻿<?php
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 // Version: 2015040101
 // Date: 2015-04-01
-// Language: en
+// Language: nl.
 
 $string['addsubmission'] = 'Inzending toevoegen';
 $string['allowlate'] = 'Inzendingen toestaan na de inleverdatum';
@@ -104,7 +119,7 @@ $string['spapercheck_help'] = 'Vergelijken met de Turnitin online opslag voor pa
 $string['standardrepository'] = 'Standaard online opslag';
 $string['student'] = 'Student';
 $string['studentreports'] = 'Originaliteitsrapporten weergeven voor studenten';
-$string['studentreports_help'] = 'Hiermee kunt u originaliteitsrapporten van Turnitin tonen aan studenten. Indien 'Ja' is geselecteerd, kunnen studenten originaliteitsrapporten bekijken die door Turnitin zijn gegenereerd.';
+$string['studentreports_help'] = 'Hiermee kunt u originaliteitsrapporten van Turnitin tonen aan studenten. Indien &#39;Ja&#39; is geselecteerd, kunnen studenten originaliteitsrapporten bekijken die door Turnitin zijn gegenereerd.';
 $string['studentstatus'] = '{$a->modified} ingediend (paper-id: {$a->objectid})';
 $string['submissiondeleteerror'] = 'Kan inzendingen niet verwijderen';
 $string['submissionextract'] = 'Uittreksel van inzending';
@@ -170,13 +185,13 @@ $string['turnitinusegrademark'] = 'GradeMark gebruiken';
 $string['turnitinusegrademark_help'] = 'Gebruik deze instelling om te kiezen of Turnitin GradeMark wordt gebruikt voor het beoordelen van inzendingen, of Moodle.';
 $string['turnitinusegrademark_desc'] = 'Kies of u GradeMark wilt gebruiken om inzendingen te beoordelen.<br /><i>(Dit is alleen beschikbaar voor degenen die GradeMark hebben geconfigureerd voor hun account)</i>';
 $string['turnitinuserepository'] = 'Online opslag van instelling inschakelen';
-$string['turnitinuserepository_desc'] = 'Kies of het gebruik van online opslag van de instelling is toegestaan in Turnitin-opdrachten.<br /><i>(Dit is alleen beschikbaar voor degenen die 'Online opslag van instelling' hebben ingeschakeld voor hun account)</i>';
+$string['turnitinuserepository_desc'] = 'Kies of het gebruik van online opslag van de instelling is toegestaan in Turnitin-opdrachten.<br /><i>(Dit is alleen beschikbaar voor degenen die &#39;Online opslag van instelling&#39; hebben ingeschakeld voor hun account)</i>';
 $string['turnitintutorsremove'] = 'Weet u zeker dat u deze privédocent wilt verwijderen van de cursus in Turnitin?';
-$string['turnitinuserepository_help'] = 'Gebruik deze instelling om de optie Online opslag van de onderwijsinstelling in het configuratiescherm van de opdracht in te schakelen.<br /><i>(Dit is alleen beschikbaar voor degenen die 'Online opslag van instelling' hebben ingeschakeld voor hun account)</i>';
+$string['turnitinuserepository_help'] = 'Gebruik deze instelling om de optie Online opslag van de onderwijsinstelling in het configuratiescherm van de opdracht in te schakelen.<br /><i>(Dit is alleen beschikbaar voor degenen die &#39;Online opslag van instelling&#39; hebben ingeschakeld voor hun account)</i>';
 $string['tutorstatus'] = '{$a->submitted}/{$a->total} inzendingen van studenten, {$a->graded} inzending{$a->gplural} beoordeeld';
 $string['type'] = 'Type inzending';
 $string['types'] = 'Typen inzending';
-$string['types_help'] = '<p>Bestanden kunnen op twee manieren worden ingediend. \'Kopiëren en plakken\' of \'Bestandsupload\'.</p>';
+$string['types_help'] = '<p>Bestanden kunnen op twee manieren worden ingediend. &#39;Kopiëren en plakken&#39; of &#39;Bestandsupload&#39;.</p>';
 $string['unlinkusers'] = 'Gebruikers ontkoppelen';
 $string['usercreationerror'] = 'Maken van Turnitin-gebruiker mislukt';
 $string['userdeleteerror'] = 'Kan gebruikersgegevens niet verwijderen';
@@ -281,7 +296,7 @@ $string['pseudolastname_desc'] = 'De achternaam van de student wordt weergegeven
 $string['pseudolastnamegen'] = 'Achternaam automatisch genereren';
 $string['pseudolastnamegen_desc'] = 'Indien ingesteld op Ja en indien de pseudo-achternaam is ingesteld op een gebruikersprofielveld, wordt het veld automatisch ingevuld met een unieke identificatiecode.';
 $string['pseudoemailsalt'] = 'Pseudo-encryptie salt';
-$string['pseudoemailsalt_desc'] = '<b>[Optioneel]</b><br />Een optioneel 'salt' om de complexiteit van gegenereerde pseudomailadressen van studenten te verhogen.<br />(<b>Opmerking:</b> het 'salt' dient ongewijzigd te blijven om consistente pseudomailadressen te behouden)';
+$string['pseudoemailsalt_desc'] = '<b>[Optioneel]</b><br />Een optioneel &#39;salt&#39; om de complexiteit van gegenereerde pseudomailadressen van studenten te verhogen.<br />(<b>Opmerking:</b> het &#39;salt&#39; dient ongewijzigd te blijven om consistente pseudomailadressen te behouden)';
 $string['pseudoemaildomain'] = 'Pseudo-e-maildomein';
 $string['pseudoemaildomain_desc'] = '<b>[Optioneel]</b><br />Een optioneel domein voor pseudo-e-mailadressen. (Standaard @tiimoodle.com wanneer dit veld wordt leeggelaten)';
 $string['pseudoemailaddress'] = 'Pseudo-e-mailadres';
@@ -305,7 +320,7 @@ $string['sinfo'] = 'Toont _START_ tot _END_ van _TOTAL_ items.';
 $string['unlinkedusers'] = 'Niet gekoppelde gebruikers';
 $string['modulename_help'] = 'Maakt een Turnitin Moodle Direct-opdracht die een activiteit in Moodle koppelt aan een of meer opdrachten in Turnitin. Eenmaal gekoppeld, kunnen docenten via de activiteit toegang krijgen tot en feedback geven op schriftelijk werk van studenten met behulp van de evaluatie-tools die in Turnitin Document Viewer beschikbaar zijn.';
 $string['transmatch'] = 'Vertaald matchen';
-$string['transmatch_desc'] = 'Bepaalt of 'Vertaald matchen' beschikbaar is als instelling in het configuratiescherm van de opdracht.<br /><i>(Schakel deze optie alleen in als 'Vertaald matchen' is ingeschakeld in uw Turnitin-account)</i>';
+$string['transmatch_desc'] = 'Bepaalt of &#39;Vertaald matchen&#39; beschikbaar is als instelling in het configuratiescherm van de opdracht.<br /><i>(Schakel deze optie alleen in als &#39;Vertaald matchen&#39; is ingeschakeld in uw Turnitin-account)</i>';
 $string['turnitintooltwo:addinstance'] = 'Turnitin Tool-activiteit toevoegen';
 $string['copyrightagreementerror'] = 'Schakel dit selectievakje in voordat u uw werkt indient om aan te geven dat u de overeenkomst accepteert.';
 $string['updatepart'] = 'Deel bijwerken';
@@ -463,7 +478,7 @@ $string['turnitinula_btn'] = 'Klik hier om de overeenkomst te lezen en acceptere
 $string['turnitinula'] = 'U moet de laatste Turnitin-gebruikersovereenkomst accepteren voor u een inzending kunt indienen.';
 $string['upgradenotavailable'] = 'Geen upgrade beschikbaar';
 $string['turnitintoolofflineerror'] = 'Er is een tijdelijke fout opgetreden. Probeer het later opnieuw.';
-$string['offlinestatus'] = 'Turnitin is offline. (De variabele $CFG->tiioffline is ingesteld op 'true'.)';
+$string['offlinestatus'] = 'Turnitin is offline. (De variabele $CFG->tiioffline is ingesteld op &#39;true&#39;.)';
 $string['disableanonconfirm'] = 'Deze handeling schakelt anonieme opmerkingen permanent uit voor deze opdracht. Weet u het zeker?';
 $string['uniquepartname'] = 'Naam van het deel moet uniek zijn';
 $string['closebutton'] = 'Sluiten';

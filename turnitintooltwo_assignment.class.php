@@ -19,6 +19,8 @@
  * @copyright 2012 iParadigms LLC *
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 require_once(__DIR__.'/turnitintooltwo_comms.class.php');
 require_once(__DIR__.'/turnitintooltwo_user.class.php');
 require_once(__DIR__.'/turnitintooltwo_submission.class.php');
@@ -105,17 +107,15 @@ class turnitintooltwo_assignment {
      *
      * @param int $membershipid id that links user to the class
      * @param string $role the user has in the class
-     * @return string $notice to display to user whether mehtod has been successful or failed
+     * @return string to display to user whether method has been successful or failed
      */
     public function remove_tii_user_by_role($membershipid, $role = "Learner") {
         if (turnitintooltwo_user::remove_user_from_class($membershipid)) {
-            $notice = ($role == "Learner") ? get_string('studentremoved', 'turnitintooltwo') :
-                                            get_string('tutorremoved', 'turnitintooltwo');
+            $notice = ($role == "Learner") ? 'studentremoved' : 'tutorremoved';
         } else {
-            $notice = ($role == "Learner") ? get_string('studentremovingerror', 'turnitintooltwo') :
-                                            get_string('tutorremovingerror', 'turnitintooltwo');
+            $notice = ($role == "Learner") ? 'studentremovingerror' : 'tutorremovingerror';
         }
-        return $notice;
+        return get_string($notice, 'turnitintooltwo');
     }
 
     /**
@@ -540,7 +540,7 @@ class turnitintooltwo_assignment {
                         try {
                             $turnitincall->createMembership($membership);
                         } catch ( InnerException $e ) {
-                            // Ignore excepion.
+                            $turnitincomms->handle_exceptions($e, 'userjoinerror');
                         }
 
                         try {
@@ -721,33 +721,42 @@ class turnitintooltwo_assignment {
             $assignment->setAllowNonOrSubmissions($this->turnitintooltwo->allownonor);
             $assignment->setLateSubmissionsAllowed($this->turnitintooltwo->allowlate);
             if ($config->repositoryoption == 1) {
-                $assignment->setInstitutionCheck((isset($this->turnitintooltwo->institution_check)) ?
-                                                        $this->turnitintooltwo->institution_check : 0);
+                $institutioncheck = (isset($this->turnitintooltwo->institution_check)) ? $this->turnitintooltwo->institution_check : 0;
+                $assignment->setInstitutionCheck($institutioncheck);
             }
 
             $attribute = "maxmarks".$i;
-            $assignment->setMaxGrade((isset($this->turnitintooltwo->$attribute)) ?
-                                                        $this->turnitintooltwo->$attribute : 0);
+            $assignment->setMaxGrade((isset($this->turnitintooltwo->$attribute)) ? $this->turnitintooltwo->$attribute : 0);
             $assignment->setSubmittedDocumentsCheck($this->turnitintooltwo->spapercheck);
             $assignment->setInternetCheck($this->turnitintooltwo->internetcheck);
             $assignment->setPublicationsCheck($this->turnitintooltwo->journalcheck);
-            $assignment->setTranslatedMatching((isset($this->turnitintooltwo->transmatch)) ?
-                                                        $this->turnitintooltwo->transmatch : 0);
+
+            $transmatch = (isset($this->turnitintooltwo->transmatch)) ? $this->turnitintooltwo->transmatch : 0;
+            $assignment->setTranslatedMatching($transmatch);
 
             // Erater settings.
             $assignment->setErater((isset($this->turnitintooltwo->erater)) ? $this->turnitintooltwo->erater : 0);
-            $assignment->setEraterSpelling((isset($this->turnitintooltwo->erater_spelling)) ?
-                                                        $this->turnitintooltwo->erater_spelling : 0);
-            $assignment->setEraterGrammar((isset($this->turnitintooltwo->erater_grammar)) ?
-                                                        $this->turnitintooltwo->erater_grammar : 0);
-            $assignment->setEraterUsage((isset($this->turnitintooltwo->erater_usage)) ? $this->turnitintooltwo->erater_usage : 0);
-            $assignment->setEraterMechanics((isset($this->turnitintooltwo->erater_mechanics)) ?
-                                                        $this->turnitintooltwo->erater_mechanics : 0);
-            $assignment->setEraterStyle((isset($this->turnitintooltwo->erater_style)) ? $this->turnitintooltwo->erater_style : 0);
-            $assignment->setEraterSpellingDictionary((isset($this->turnitintooltwo->erater_dictionary)) ?
-                                                        $this->turnitintooltwo->erater_dictionary : 'en_US');
-            $assignment->setEraterHandbook((isset($this->turnitintooltwo->erater_handbook)) ?
-                                                        $this->turnitintooltwo->erater_handbook : 0);
+
+            $eraterspelling = (isset($this->turnitintooltwo->erater_spelling)) ? $this->turnitintooltwo->erater_spelling : 0;
+            $assignment->setEraterSpelling($eraterspelling);
+
+            $eratergrammar = (isset($this->turnitintooltwo->erater_grammar)) ? $this->turnitintooltwo->erater_grammar : 0;
+            $assignment->setEraterGrammar($eratergrammar);
+
+            $eraterusage = (isset($this->turnitintooltwo->erater_usage)) ? $this->turnitintooltwo->erater_usage : 0;
+            $assignment->setEraterUsage($eraterusage);
+
+            $eratermechanics = (isset($this->turnitintooltwo->erater_mechanics)) ? $this->turnitintooltwo->erater_mechanics : 0;
+            $assignment->setEraterMechanics($eratermechanics);
+
+            $eraterstyle = (isset($this->turnitintooltwo->erater_style)) ? $this->turnitintooltwo->erater_style : 0;
+            $assignment->setEraterStyle($eraterstyle);
+
+            $eraterdictionary = (isset($this->turnitintooltwo->erater_dictionary)) ? $this->turnitintooltwo->erater_dictionary : 'en_US';
+            $assignment->setEraterSpellingDictionary($eraterdictionary);
+
+            $eraterhandbook = (isset($this->turnitintooltwo->erater_handbook)) ? $this->turnitintooltwo->erater_handbook : 0;
+            $assignment->setEraterHandbook($eraterhandbook);
 
             // Create Assignment on Turnitin.
             $newassignmentid = $this->create_tii_assignment($assignment, $toolid, $i);
@@ -1186,10 +1195,10 @@ class turnitintooltwo_assignment {
 
                 // If post date is moved beyond the current time, reset anon gradebook flag.
                 if ($fieldvalue > time()) {
-                    $update_assignment = new stdClass();
-                    $update_assignment->id = $partdetails->turnitintooltwoid;
-                    $update_assignment->anongradebook = 0;
-                    $DB->update_record("turnitintooltwo", $update_assignment);
+                    $updateassignment = new stdClass();
+                    $updateassignment->id = $partdetails->turnitintooltwoid;
+                    $updateassignment->anongradebook = 0;
+                    $DB->update_record("turnitintooltwo", $updateassignment);
                 }
 
                 $assignment->setFeedbackReleaseDate(gmdate("Y-m-d\TH:i:s\Z", $fieldvalue));
@@ -1308,19 +1317,40 @@ class turnitintooltwo_assignment {
         $this->turnitintooltwo->usegrademark = $config->usegrademark;
 
         // Set the checkbox settings for updates.
-        $this->turnitintooltwo->erater_spelling = (isset($this->turnitintooltwo->erater_spelling)) ?
-                                                        $this->turnitintooltwo->erater_spelling : 0;
-        $this->turnitintooltwo->erater_grammar = (isset($this->turnitintooltwo->erater_grammar)) ?
-                                                        $this->turnitintooltwo->erater_grammar : 0;
-        $this->turnitintooltwo->erater_usage = (isset($this->turnitintooltwo->erater_usage)) ?
-                                                        $this->turnitintooltwo->erater_usage : 0;
-        $this->turnitintooltwo->erater_mechanics = (isset($this->turnitintooltwo->erater_mechanics)) ?
-                                                        $this->turnitintooltwo->erater_mechanics : 0;
-        $this->turnitintooltwo->erater_style = (isset($this->turnitintooltwo->erater_style)) ?
-                                                        $this->turnitintooltwo->erater_style : 0;
-        $this->turnitintooltwo->transmatch = (isset($this->turnitintooltwo->transmatch)) ? $this->turnitintooltwo->transmatch : 0;
-        $this->turnitintooltwo->institution_check = (isset($this->turnitintooltwo->institution_check)) ?
-                                                        $this->turnitintooltwo->institution_check : 0;
+        $this->turnitintooltwo->erater_spelling = 0;
+        if (isset($this->turnitintooltwo->erater_spelling)) {
+            $this->turnitintooltwo->erater_spelling = $this->turnitintooltwo->erater_spelling;
+        }
+
+        $this->turnitintooltwo->erater_grammar = 0;
+        if (isset($this->turnitintooltwo->erater_grammar)) {
+            $this->turnitintooltwo->erater_grammar = $this->turnitintooltwo->erater_grammar;
+        }
+
+        $this->turnitintooltwo->erater_usage = 0;
+        if (isset($this->turnitintooltwo->erater_usage)) {
+            $this->turnitintooltwo->erater_usage = $this->turnitintooltwo->erater_usage;
+        }
+
+        $this->turnitintooltwo->erater_mechanics = 0;
+        if (isset($this->turnitintooltwo->erater_mechanics)) {
+            $this->turnitintooltwo->erater_mechanics = $this->turnitintooltwo->erater_mechanics;
+        }
+
+        $this->turnitintooltwo->erater_style = 0;
+        if (isset($this->turnitintooltwo->erater_style)) {
+            $this->turnitintooltwo->erater_style = $this->turnitintooltwo->erater_style;
+        }
+
+        $this->turnitintooltwo->transmatch = 0;
+        if (isset($this->turnitintooltwo->transmatch)) {
+            $this->turnitintooltwo->transmatch = $this->turnitintooltwo->transmatch;
+        }
+
+        $this->turnitintooltwo->institution_check = 0;
+        if (isset($this->turnitintooltwo->institution_check)) {
+            $this->turnitintooltwo->institution_check = $this->turnitintooltwo->institution_check;
+        }
 
         // Update each individual part.
         for ($i = 1; $i <= $this->turnitintooltwo->numparts; $i++) {
@@ -1338,8 +1368,7 @@ class turnitintooltwo_assignment {
             $assignment->setSmallMatchExclusionThreshold((int) $this->turnitintooltwo->excludevalue);
             $assignment->setLateSubmissionsAllowed($this->turnitintooltwo->allowlate);
             if ($config->repositoryoption == 1) {
-                $assignment->setInstitutionCheck((isset($this->turnitintooltwo->institution_check)) ?
-                                                        $this->turnitintooltwo->institution_check : 0);
+                $assignment->setInstitutionCheck($institutioncheck);
             }
 
             $attribute = "maxmarks".$i;
@@ -1357,10 +1386,16 @@ class turnitintooltwo_assignment {
             $assignment->setEraterUsage($this->turnitintooltwo->erater_usage);
             $assignment->setEraterMechanics($this->turnitintooltwo->erater_mechanics);
             $assignment->setEraterStyle($this->turnitintooltwo->erater_style);
-            $assignment->setEraterSpellingDictionary((isset($this->turnitintooltwo->erater_dictionary)) ?
-                                                        $this->turnitintooltwo->erater_dictionary : 'en_US');
-            $assignment->setEraterHandbook((isset($this->turnitintooltwo->erater_handbook)) ?
-                                                        $this->turnitintooltwo->erater_handbook : 0);
+            $eraterdictionary = 'en_US';
+            if (isset($this->turnitintooltwo->erater_dictionary)) {
+                $eraterdictionary = $this->turnitintooltwo->erater_dictionary;
+            }
+            $assignment->setEraterSpellingDictionary($eraterdictionary);
+            $eraterhandbook = 0;
+            if (isset($this->turnitintooltwo->erater_handbook)) {
+                $eraterhandbook = $this->turnitintooltwo->erater_handbook;
+            }
+            $assignment->setEraterHandbook($eraterhandbook);
 
             $attribute = "dtstart".$i;
             if (($restore) && ($this->turnitintooltwo->$attribute < strtotime("-1 year"))) {
@@ -1591,7 +1626,7 @@ class turnitintooltwo_assignment {
 
             // Only update submissions that have been modified since an hour before last update.
             if (!empty($part->gradesupdated)) {
-                $submission->setDateFrom(gmdate("Y-m-d\TH:i:s\Z", $part->gradesupdated-(60*60)));
+                $submission->setDateFrom(gmdate("Y-m-d\TH:i:s\Z", $part->gradesupdated - (60 * 60)));
             }
 
             $response = $turnitincall->findSubmissions($submission);
@@ -1802,7 +1837,7 @@ class turnitintooltwo_assignment {
         $overallgrade = null;
         $parts = $this->get_parts();
 
-        if( empty($cm) ) {
+        if (empty($cm)) {
             $cm = get_coursemodule_from_instance("turnitintooltwo", $this->id, $this->turnitintooltwo->course);
         }
         $istutor = has_capability('mod/turnitintooltwo:grade', context_module::instance($cm->id));
@@ -1820,8 +1855,8 @@ class turnitintooltwo_assignment {
         foreach ($submissions as $submission) {
             if (!is_nan($submission->submission_grade) AND (!empty($submission->submission_gmimaged) || $istutor)
                     AND !is_null($submission->submission_grade) AND $weightarray[$submission->submission_part] != 0) {
-                $overallgrade += ($submission->submission_grade / $weightarray[$submission->submission_part]) *
-                        ($weightarray[$submission->submission_part] / $overallweight) * $maxgrade;
+                $weightedgrade = $submission->submission_grade / $weightarray[$submission->submission_part];
+                $overallgrade += $weightedgrade * ($weightarray[$submission->submission_part] / $overallweight) * $maxgrade;
             }
         }
 
@@ -1931,7 +1966,7 @@ class turnitintooltwo_assignment {
                 $submission->firstname = $user->firstname;
                 $submission->lastname = $user->lastname;
                 $submission->fullname = $user->fullname;
-                $submission->tii_user_id = $user->tii_user_id;
+                $submission->tiiuserid = $user->tiiuserid;
                 $submission->nmoodle = 0;
 
                 if (isset($users[$user->id])) {

@@ -1,7 +1,22 @@
-﻿<?php
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 // Version: 2015040101
 // Date: 2015-04-01
-// Language: en
+// Language: ru.
 
 $string['addsubmission'] = 'Добавить работу';
 $string['allowlate'] = 'Разрешить отправку работы после назначенной даты выполнения';
@@ -287,8 +302,7 @@ $string['pseudoemaildomain_desc'] = '<b>[Необязательно]</b><br />В
 $string['pseudoemailaddress'] = 'Псевдоадрес электронной почты';
 $string['instructor'] = 'Преподаватель';
 $string['files'] = 'Файлы';
-$string['filedeleteconfirm'] = 'Вы уверены, что хотите удалить этот файл?
-Это действие не может быть отменено.';
+$string['filedeleteconfirm'] = 'Вы уверены, что хотите удалить этот файл? Это действие не может быть отменено.';
 $string['filebrowser'] = 'Браузер файлов Moodle Direct';
 $string['deletable'] = 'Стираемый';
 $string['inactive'] = 'Неактивный';
